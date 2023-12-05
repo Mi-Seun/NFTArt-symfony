@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nft{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="text-center">Nft</h1>
+
+    {# <section class="d-flex"> #}
+    <img class="d-block shadow-lg bg-body rounded mx-auto my-4" src ="{{ asset('upload/' ~ nft.pathurl)}}" alt="nft.pathurl">
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th scope="row">Id</th>
+                <td>{{ nft.id }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Name_nft</th>
+                <td>{{ nft.nameNft }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Priceeth</th>
+                <td>{{ nft.priceeth }}</td>
+            </tr>
+            {# <tr>
+                <th scope="row">Filesize</th>
+                <td>{{ nft.filesize }}</td>
+            </tr> #}
+            <tr>
+                <th scope="row">Description</th>
+                <td>{{ nft.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+{# </section> #}
+
+    <h2 class="mt-4">List des utilisateurs</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom de Sous-catégorie</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <th scope="row">{{ user.getId() }}</th>
+                <td>{{ user.getEmail() }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_nft_index') }}" class="btn btn-secondary m-1">Back to List</a>
+    <a href="{{ path('app_nft_edit', {'id': nft.id}) }}" class="btn btn-dark m-1">Edit</a>
+
+    {{ include('nft/_delete_form.html.twig') }}
+</div>
+{% endblock %}

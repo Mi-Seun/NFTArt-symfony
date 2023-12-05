@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ ('/upload/elian6.jpg') }}">
+    <style>
+        .hero {
+            background-image: url('{{ ('/upload/bg7.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            text-align: center;
+            display: flex;
+            align-items: center ;
+            justify-content: center;
+            object-fit: center;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 4rem;
+            margin-top: 0px;
+
+        }
+
+        .info-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="hero">
+    <h1>Bienvenu chez NFTArt</h1>
+</div>
+
+    <div class="container mt-4">
+        <div class="card-header text-center">
+            <h1 class="text-center m-5">Register</h1>
+        </div>
+        {{ form_errors(registrationForm) }}
+
+        {{ form_start(registrationForm) }}
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                {{ form_row(registrationForm.ismale, {'label': 'Gender'}) }}
+                {{ form_row(registrationForm.firstname) }}
+                {{ form_row(registrationForm.lastname) }}
+                {{ form_row(registrationForm.datebirth) }}
+                {{ form_row(registrationForm.adnum) }}
+                {{ form_row(registrationForm.adstreet) }}
+                {{ form_row(registrationForm.adcity) }}
+                {{ form_row(registrationForm.adpostalcode) }}
+            </div>
+            <div class="col-md-6 mt-3">
+                {{ form_row(registrationForm.email) }}
+                {{ form_row(registrationForm.plainPassword, {'label': 'Password'}) }}
+                {{ form_row(registrationForm.agreeTerms, {'label': 'Agree to Terms'}) }}
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary  mb-5">Register</button>
+    </div>    
+
+    {{ form_end(registrationForm) }}
+{% endblock %}

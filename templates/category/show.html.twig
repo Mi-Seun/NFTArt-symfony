@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="text-center">Category</h1>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ category.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name_cat</th>
+                    <td>{{ category.nameCat }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>TEST</p>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom de Sous-catégory</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for subcategory in subcategories %}
+                    <tr>
+                        <td>{{ subcategory.id }}</td>
+                        <td>{{ subcategory.getNameSc() }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="2">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_category_index') }}" class="btn btn-secondary">Back to List</a>
+        <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-primary">Edit</a>
+        {{ include('category/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

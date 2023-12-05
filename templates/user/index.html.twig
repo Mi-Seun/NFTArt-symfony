@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <style>
+        .hero {
+            background-image: url('{{ ('/upload/bg9.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: center;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 5rem;
+        }
+
+        .info-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="hero">
+    <h1>NFTArt</h1>
+</div>
+    <div class="container mt-4">
+        <h1 class="text-center">User index</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Email</th>
+                    <th class="text-center">Roles</th>
+                    <th class="text-center">Ismale</th>
+                    <th class="text-center">Firstname</th>
+                    <th class="text-center">Lastname</th>
+                    <th class="text-center">Datebirth</th>
+                    <th class="text-center">Adnum</th>
+                    <th class="text-center">Adstreet</th>
+                    <th class="text-center">Adcity</th>
+                    <th class="text-center">Adpostalcode</th>
+                    <th class="text-center">actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td class="text-center">{{ user.id }}</td>
+                    <td class="text-center">{{ user.email }}</td>
+                    <td class="text-center">{{ user.roles ? user.roles|highestRole }}</td>
+                    {# <td class="text-center">{{ user.roles ? user.roles|json_encode : '' }}</td> #}
+                    <td class="text-center">{{ user.ismale ? 'Yes' : 'No' }}</td>
+                    <td class="text-center">{{ user.firstname }}</td>
+                    <td class="text-center">{{ user.lastname }}</td>
+                    <td class="text-center">{{ user.datebirth ? user.datebirth|date('Y-m-d H:i:s') : '' }}</td>
+                    <td class="text-center">{{ user.adnum }}</td>
+                    <td class="text-center">{{ user.adstreet }}</td>
+                    <td class="text-center">{{ user.adcity }}</td>
+                    <td class="text-center">{{ user.adpostalcode }}</td>
+                    <td class="text-center d-flex">
+                        <a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-dark btn-sm m-1">show</a>
+                        <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-info btn-sm m-1">edit</a>
+                        <a href="{{ path('app_user_delete', {'id': user.id}) }}" class="btn btn-secondary btn-sm m-1">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="13">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_user_new') }}" class="btn btn-dark">Create new</a>
+    </div>
+    <div class="container mt-3">
+        <a href="{{ path('app_admin') }}" class="btn btn-secondary">Back to Administration</a>
+    </div>
+{% endblock %}

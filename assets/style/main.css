@@ -1,0 +1,7 @@
+.navbar {
+    background-color: black !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white !important;
+}

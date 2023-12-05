@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connectez-vous!{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ ('/upload/elian6.jpg') }}">
+    <style>
+        .hero {
+            background-image: url('{{ ('/upload/bg9.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            text-align: center;
+            display: flex;
+            align-items: center ;
+            justify-content: center;
+            object-fit: center;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 4rem;
+            margin-top: 0px;
+
+        }
+
+        .info-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="hero mt-5 mb-5">
+    <h1>Bienvenu chez NFTArt!!!</h1>
+</div>
+
+    <div class="container mt-4">
+        <form method="post" class="form-signin">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <h4 class="mb-3 fw-bold fs-3">
+                    Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}" class="btn btn-danger">Déconnexion</a>
+                </h4>
+            {% endif %}
+            <h1 class="h3 mb-3 font-weight-normal">Veuillez vous connecter</h1>
+            <label for="inputEmail" class="visually-hidden">Adresse email</label>
+            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            <label for="inputPassword" class="visually-hidden">Mot de passe</label>
+            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <button class="btn btn-lg btn-primary mt-3 mb-5" type="submit">Se connecter</button>
+        </form>
+    </div>
+{% endblock %}

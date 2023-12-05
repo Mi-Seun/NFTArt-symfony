@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bonjour AdminController!{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .card-img-top {
+            max-height: 340px; /* 원하는 높이로 조절 */
+            max-width: 100%; /* 가로 너비를 유지하면서 조절 */
+            object-fit: cover; /* 이미지가 카드에 맞게 렌더링되도록 함 */
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-5 h-100">
+        <h1 class="display-4 text-center">L'interface d'administration</h1>
+        <div class="row mt-4">
+            <div class="col-md-3 mb-5 pb-5">
+                <div class="card h-100">
+                    <img src="{{ ('/upload/borba.jpg') }}" class="card-img-top" alt="NFT Image">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title text-center flex-grow-1 bg-light bg-gradient">Les NFTs</h2>
+                        <a class="btn btn-dark" href="{{ path('app_nft_index') }}">Accéder</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-5 pb-5">
+                <div adiv class="card h-100">
+                    <img src="{{ ('/upload/elian6.jpg') }}" class="card-img-top" alt="Category Image">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title text-center flex-grow-1 bg-light bg-gradient">Les catégories</h2>
+                        <a class="btn btn-dark" href="{{ path('app_category_index') }}">Accéder</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-5 pb-5">
+                <div class="card h-100">
+                    <img src="{{ ('/upload/ai7.jpg') }}" class="card-img-top" alt="Subcategory Image">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title text-center flex-grow-1 bg-light bg-gradient">Les sous-catégories</h2>
+                        <a class="btn btn-dark" href="{{ path('app_subcategory_index') }}">Accéder</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-5 pb-5">
+                <div class="card h-100">
+                    <img src="{{ ('/upload/man3.jpg') }}" class="card-img-top" alt="User Image">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title text-center flex-grow-1 bg-light">Les utilisateurs</h2>
+                        <a class="btn btn-dark" href="{{ path('app_user_index') }}">Accéder</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

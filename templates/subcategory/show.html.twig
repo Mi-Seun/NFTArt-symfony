@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Subcategory Details{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mb-4">Subcategory Details</h1>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>ID</th>
+                    <td>{{ subcategory.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ subcategory.nameSc }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="mb-3">NFT List</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for nft in subcategory.nfts %}
+                    <tr>
+                        <td>{{ nft.getId() }}</td>
+                        <td>{{ nft.getNameNft() }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="2">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_subcategory_index') }}" class="btn btn-secondary">Back to List</a>
+        <a href="{{ path('app_subcategory_edit', {'id': subcategory.id}) }}" class="btn btn-primary">Edit</a>
+        {{ include('subcategory/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

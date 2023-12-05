@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Subcategory index{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <style>
+        .hero {
+            background-image: url('{{ ('/upload/bg1.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: center;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 5rem;
+        }
+
+        .info-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="hero">
+    <h1>NFTArt</h1>
+</div>
+    <div class="container">
+        <h1 class="m-4 text-center">Subcategory index</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Name_sc</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for subcategory in subcategories %}
+                <tr>
+                    <td class="text-center">{{ subcategory.id }}</td>
+                    <td class="text-center">{{ subcategory.nameSc }}</td>
+                    <td class="text-center">
+                        <a href="{{ path('app_subcategory_show', {'id': subcategory.id}) }}" class="btn btn-dark btn-sm">Show</a>
+                        <a href="{{ path('app_subcategory_edit', {'id': subcategory.id}) }}" class="btn btn-info btn-sm">Edit</a>
+                        <a href="{{ path('app_subcategory_delete', {'id': subcategory.id}) }}" class="btn btn-secondary btn-sm" onclick="return confirm('Are you sure you want to delete this item?')">Delete</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_subcategory_new') }}" class="btn btn-dark">Create New</a>
+    </div>
+    <div class="container mt-3">
+        <a href="{{ path('app_admin') }}" class="btn btn-secondary">Back to Administration</a>
+    </div>
+{% endblock %}

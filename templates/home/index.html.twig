@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenu chez NFTArt{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ ('/upload/elian6.jpg') }}">
+    <style>
+        .hero {
+            background-image: url('{{ ('/upload/bg8.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            text-align: center;
+            display: flex;
+            align-items: ;
+            justify-content: center;
+            object-fit: center;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 4rem;
+            margin-top: 30px;
+
+        }
+
+        .info-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="hero">
+    <h1>Bienvenu chez NFTArt</h1>
+</div>
+
+<div class="container info-section">
+    <div class="row m-5 text-center">
+        <div class="col-lg-6 mt-5 mb-5">
+            <h2>À propos de nous</h2>
+            <p>
+                Bienvenue sur notre plateforme NFT. Découvrez une variété de NFTs incroyables créés par des artistes talentueux.
+            </p>
+        </div>
+        <div class="col-lg-6 mt-5 mb-5">
+            <h2>Nos collections</h2>
+            <p>
+                Explorez nos différentes collections de NFTs, de l'art numérique à la musique et bien plus encore.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container info-section">
+    <div class="row">
+        <div class="col-lg-6 mt-5 mb-5">
+            <h2>Créateurs de contenu</h2>
+            <p>
+                Notre plateforme permet aux artistes et créateurs de vendre et de promouvoir leurs œuvres uniques sous forme de NFTs.
+            </p>
+        </div>
+        <div class="col-lg-6 mt-5 mb-5">
+            <h2>Rejoignez-nous</h2>
+            <p class="mb-5">
+                Inscrivez-vous pour découvrir plus de NFTs, suivre vos artistes préférés et participer à des enchères passionnantes.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

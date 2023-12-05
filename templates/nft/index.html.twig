@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nft index{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <style>
+        .hero {
+            background-image: url('{{ ('/upload/bg6.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: center;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 5rem;
+        }
+
+        .info-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="hero">
+    <h1>NFTArt</h1>
+</div>
+
+    <div class="container mt-5">
+        <h1 class="display-4 text-center">NFT Index</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="text-center">Id</th>
+                        <th class="text-center">Name_nft</th>
+                        <th class="text-center">Priceeth</th>
+                        <th class="text-center">Pathurl</th>
+                        <th class="text-center">Description</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for nft in nfts %}
+                    <tr>
+                        <td class="text-center">{{ nft.id }}</td>
+                        <td class="text-center">{{ nft.nameNft }}</td>
+                        <td class="text-center">{{ nft.priceeth }}</td>
+                        <td class="text-center">{{ nft.pathurl }}</td>
+                        <td class="text-center">{{ nft.description }}</td>
+                        <td class="text-center d-flex">
+                            <a href="{{ path('app_nft_show', {'id': nft.id}) }}" class="btn btn-dark btn-sm m-1">Show</a>
+                            <a href="{{ path('app_nft_edit', {'id': nft.id}) }}" class="btn btn-info btn-sm m-1">Edit</a>
+                            <a href="{{ path('app_nft_delete', {'id': nft.id}) }}" class="btn btn-secondary btn-sm m-1">Delete</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td class="text-center" colspan="6">No records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <a href="{{ path('app_nft_new') }}" class="btn btn-dark">Create new</a>
+    </div>
+    <div class="container mt-3">
+        <a href="{{ path('app_admin') }}" class="btn btn-secondary">Back to Administration</a>
+    </div>
+{% endblock %}

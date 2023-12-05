@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}NFT-Web-MiSun-JANG{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'%3E%3Ctext y='1.2em' font-size='96'%3E⚫️%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <meta name="description" content="Free Web tutorials">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="John Doe">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('style') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('script') }}
+    {% endblock %}
+</head>
+<body>
+    {% include 'partials/header.html.twig' %}
+
+
+    {% block body %}{% endblock %}
+    {% include 'partials/footer.html.twig' %}
+</body>
+</html>

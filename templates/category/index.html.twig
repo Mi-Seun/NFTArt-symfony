@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category index{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <style>
+        .hero {
+            background-image: url('{{ ('/upload/bg2.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            object-fit: center;
+        }
+
+        .hero h1 {
+            color: #fff;
+            font-size: 5rem;
+        }
+
+        .info-section {
+            margin: 20px 0;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="hero">
+    <h1>NFTArt</h1>
+</div>
+
+    <div class="container mt-4">
+        <h1 class="text-center">Category index</h1>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">Id</th>
+                    <th class="text-center">Catégory</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                    <tr>
+                        <td class="text-center">{{ category.id }}</td>
+                        <td class="text-center">{{ category.nameCat }}</td>
+                        <td class="text-center">
+                            <a href="{{ path('app_category_show', {'id': category.id}) }}" class="btn btn-dark">Show</a>
+                            <a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-info">Edit</a>
+                            <a href="{{ path('app_category_delete', {'id': category.id}) }}" class="btn btn-secondary">delete</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_category_new') }}" class="btn btn-dark">Create new</a>
+    </div>
+    <div class="container mt-3">
+        <a href="{{ path('app_admin') }}" class="btn btn-secondary">Back to Administration</a>
+    </div>
+{% endblock %}
